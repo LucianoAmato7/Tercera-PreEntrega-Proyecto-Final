@@ -73,7 +73,10 @@ app.get("/", checkAuthentication, gzipMiddleware, (req, res) => {
 
   let user = req.session.user;
 
-  let url = {protocol: `${req.protocol}s`, host: req.hostname, port: server.address().port}
+  //BOOLEANO PARA LA URL DE LA IMAGEN DEL AVATAR, YA QUE DEPENDE DE SI EL HOST ES LOCAL O REMOTO.
+  let hostBoolean = req.hostname == 'localhost' ? true : false;
+  
+  let url = {protocol: req.protocol, host: req.hostname, port: server.address().port, hostBoolean}
 
   let toRender = Object.assign({}, user, url);
 
