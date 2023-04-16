@@ -73,7 +73,7 @@ app.get("/", checkAuthentication, gzipMiddleware, (req, res) => {
 
   let user = req.session.user;
 
-  let url = {protocol: req.protocol, host: req.hostname, port: server.address().port}
+  let url = {protocol: `${req.protocol}s`, host: req.hostname, port: server.address().port}
 
   let toRender = Object.assign({}, user, url);
 
